@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrowImageDirection : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class ArrowImageDirection : MonoBehaviour
             case Direction.Left:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
+            case Direction.Neutral:
+                GetComponent<Image>().enabled = false;
+                break;
             case Direction.Right:
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
@@ -37,5 +41,7 @@ public class ArrowImageDirection : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 45);
                 break;
         }
+
+        gameObject.SetActive(true);
     }
 }
