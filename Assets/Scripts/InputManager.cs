@@ -9,21 +9,25 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             _inputKeyRecordUI.InputDirectionKey(Direction.Left);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             _inputKeyRecordUI.InputDirectionKey(Direction.Right);
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             _inputKeyRecordUI.InputDirectionKey(Direction.Up);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             _inputKeyRecordUI.InputDirectionKey(Direction.Down);
+        }
+        else
+        {
+            _inputKeyRecordUI.InputDirectionKey(Direction.Neutral);
         }
     }
 }
