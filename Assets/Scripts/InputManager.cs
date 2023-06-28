@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     private InputKeyListSO _inputKeyListSO = null;
 
     private Key[] _useKeyArray = null;
+    private int _pressingKeyCount = 0;
 
     void Awake()
     {
@@ -27,6 +28,8 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        _pressingKeyCount = 0;
+
         for (int i = 0; i < _useKeyArray.Length; ++i)
         {
             KeyCode checkedKeyCode = _useKeyArray[i].keyCode;
@@ -35,6 +38,7 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(checkedKeyCode))
             {
                 _useKeyArray[i].state = KeyState.Down;
+                ++_pressingKeyCount;
             }
             else if (Input.GetKeyUp(checkedKeyCode))
             {
@@ -43,6 +47,11 @@ public class InputManager : MonoBehaviour
             else if (checkedKeyState == KeyState.Down)
             {
                 _useKeyArray[i].state = KeyState.Press;
+                ++_pressingKeyCount;
+            }
+            else if (checkedKeyState == KeyState.Press)
+            {
+                ++_pressingKeyCount;
             }
             else if (checkedKeyState == KeyState.Up)
             {
@@ -50,6 +59,7 @@ public class InputManager : MonoBehaviour
             }
         }
 
+        bool isAllUp = true;
         for (int i = 0; i < _inputKeyListSO.Length; ++i)
         {
             InputKey inputKey = _inputKeyListSO.inputKeys[i];
@@ -68,10 +78,19 @@ public class InputManager : MonoBehaviour
                 }
             }
 
+            // 여기 조건 약간 변경해야 될듯
+            isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
+
             if (isAllPress)
             {
+                isAllUp = false;
                 _inputKeyRecordUI.InputDirectionKey(inputKey.EventName);
             }
+        }
+
+        if (isAllUp)
+        {
+            _inputKeyRecordUI.InputDirectionKey(Direction.Neutral);
         }
     }
 }
