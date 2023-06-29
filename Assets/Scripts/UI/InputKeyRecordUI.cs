@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class InputKeyRecordUI : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        for (int i = 1; i < Enum.GetValues(typeof(Direction)).Length; ++i)
+        {
+            InputEventManager.AddEvent((Direction)i, () => InputDirectionKey((Direction)i));
+        }
     }
 
     public void InputDirectionKey(Direction direction)

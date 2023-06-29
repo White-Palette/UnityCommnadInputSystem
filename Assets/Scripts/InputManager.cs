@@ -84,7 +84,8 @@ public class InputManager : MonoBehaviour
             if (isAllPress)
             {
                 isAllUp = false;
-                _inputKeyRecordUI.InputDirectionKey(inputKey.EventName);
+                Debug.Log(inputKey.EventName);
+                InputEventManager.ExecuteEvent(inputKey.EventName);
             }
         }
 
