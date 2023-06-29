@@ -14,10 +14,17 @@ public class InputKeyRecordUI : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        for (int i = 1; i < Enum.GetValues(typeof(Direction)).Length; ++i)
-        {
-            InputEventManager.AddEvent((Direction)i, () => InputDirectionKey((Direction)i));
-        }
+
+        InputEventManager.AddEvent(Direction.Up, () => InputDirectionKey(Direction.Up));
+        InputEventManager.AddEvent(Direction.Down, () => InputDirectionKey(Direction.Down));
+        InputEventManager.AddEvent(Direction.Left, () => InputDirectionKey(Direction.Left));
+        InputEventManager.AddEvent(Direction.Right, () => InputDirectionKey(Direction.Right));
+        InputEventManager.AddEvent(Direction.LeftUp, () => InputDirectionKey(Direction.LeftUp));
+        InputEventManager.AddEvent(Direction.LeftDown, () => InputDirectionKey(Direction.LeftDown));
+        InputEventManager.AddEvent(Direction.RightUp, () => InputDirectionKey(Direction.RightUp));
+        InputEventManager.AddEvent(Direction.RightDown, () => InputDirectionKey(Direction.RightDown));
+
+        InputEventManager.AddEvent(Direction.Neutral, () => InputDirectionKey(Direction.Neutral));
     }
 
     public void InputDirectionKey(Direction direction)
