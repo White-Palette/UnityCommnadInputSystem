@@ -10,6 +10,11 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private InputKeyListSO _inputKeyListSO = null;
+    
+    [SerializeField]
+    private CommandListSO _commandListSO = null;
+    
+    private KeyCode[] _commandStartKeyArray = null;
 
     private Key[] _useKeyArray = null;
     private int _pressingKeyCount = 0;
