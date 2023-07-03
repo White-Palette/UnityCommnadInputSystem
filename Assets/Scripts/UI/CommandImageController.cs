@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ArrowImageDirection : MonoBehaviour
+public class CommandImageController : MonoBehaviour
 {
-    private InputEvent _direction = InputEvent.Neutral;
+    [SerializeField]
+    private Image _image = null;
 
-    public void SetDirection(InputEvent direction)
+    private InputEvent _key = InputEvent.Neutral;
+
+    [SerializeField]
+    private Sprite[] _sprites = null;
+
+    public void SetDirection(InputEvent eventType)
     {
-        this._direction = direction;
+        this._key = eventType;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
 
-        switch (_direction)
+        if ((int)_key < 10)
+        {
+            _image.sprite = _sprites[0];
+        }
+
+        switch (_key)
         {
             case InputEvent.LeftDown:
                 transform.rotation = Quaternion.Euler(0, 0, 225);
@@ -26,7 +38,7 @@ public class ArrowImageDirection : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
             case InputEvent.Neutral:
-                GetComponent<Image>().enabled = false;
+                _image.enabled = false;
                 break;
             case InputEvent.Right:
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -39,6 +51,18 @@ public class ArrowImageDirection : MonoBehaviour
                 break;
             case InputEvent.RightUp:
                 transform.rotation = Quaternion.Euler(0, 0, 45);
+                break;
+            case InputEvent.LP:
+                _image.sprite = _sprites[1];
+                break;
+            case InputEvent.RP:
+                _image.sprite = _sprites[2];
+                break;
+            case InputEvent.LK:
+                _image.sprite = _sprites[3];
+                break;
+            case InputEvent.RK:
+                _image.sprite = _sprites[4];
                 break;
         }
 

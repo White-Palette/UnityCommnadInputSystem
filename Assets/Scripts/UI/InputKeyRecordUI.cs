@@ -9,7 +9,7 @@ public class InputKeyRecordUI : MonoBehaviour
     private GameObject _inputKeyPrefab = null;
 
     private RectTransform rectTransform = null;
-    private Queue<ArrowImageDirection> _inputKeyQueue = new Queue<ArrowImageDirection>();
+    private Queue<CommandImageController> _inputKeyQueue = new Queue<CommandImageController>();
 
     private void Awake()
     {
@@ -25,11 +25,16 @@ public class InputKeyRecordUI : MonoBehaviour
         InputEventManager.AddEvent(InputEvent.RightDown, () => InputDirectionKey(InputEvent.RightDown));
 
         InputEventManager.AddEvent(InputEvent.Neutral, () => InputDirectionKey(InputEvent.Neutral));
+
+        InputEventManager.AddEvent(InputEvent.LP, () => InputDirectionKey(InputEvent.LP));
+        InputEventManager.AddEvent(InputEvent.RP, () => InputDirectionKey(InputEvent.RP));
+        InputEventManager.AddEvent(InputEvent.LK, () => InputDirectionKey(InputEvent.LK));
+        InputEventManager.AddEvent(InputEvent.RK, () => InputDirectionKey(InputEvent.RK));
     }
 
     public void InputDirectionKey(InputEvent direction)
     {
-        var keyUI = Instantiate(_inputKeyPrefab, transform).GetComponent<ArrowImageDirection>();
+        var keyUI = Instantiate(_inputKeyPrefab, transform).GetComponent<CommandImageController>();
         keyUI.SetDirection(direction);
         _inputKeyQueue.Enqueue(keyUI);
 

@@ -29,3 +29,11 @@ MonoBehaviour:
     eventName: 8
   - keyCodes: 7700000061000000
     eventName: 7
+  - keyCodes: 75000000
+    eventName: 10
+  - keyCodes: 69000000
+    eventName: 11
+  - keyCodes: 6a000000
+    eventName: 12
+  - keyCodes: 6b000000
+    eventName: 13
