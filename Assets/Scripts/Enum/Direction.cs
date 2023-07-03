@@ -1,5 +1,5 @@
 
-public enum Direction
+public enum InputEvent
 {
     LeftDown = 1,
     Down = 2,
@@ -9,5 +9,9 @@ public enum Direction
     Right = 6,
     LeftUp = 7,
     Up = 8,
-    RightUp = 9
+    RightUp = 9,
+    LP,
+    RP,
+    LK,
+    RK
 }

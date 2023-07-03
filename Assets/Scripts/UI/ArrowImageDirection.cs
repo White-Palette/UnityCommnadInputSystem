@@ -5,39 +5,39 @@ using UnityEngine.UI;
 
 public class ArrowImageDirection : MonoBehaviour
 {
-    private Direction _direction = Direction.Neutral;
+    private InputEvent _direction = InputEvent.Neutral;
 
-    public void SetDirection(Direction direction)
+    public void SetDirection(InputEvent direction)
     {
         this._direction = direction;
 
         switch (_direction)
         {
-            case Direction.LeftDown:
+            case InputEvent.LeftDown:
                 transform.rotation = Quaternion.Euler(0, 0, 225);
                 break;
-            case Direction.Down:
+            case InputEvent.Down:
                 transform.rotation = Quaternion.Euler(0, 0, 270);
                 break;
-            case Direction.RightDown:
+            case InputEvent.RightDown:
                 transform.rotation = Quaternion.Euler(0, 0, 315);
                 break;
-            case Direction.Left:
+            case InputEvent.Left:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
-            case Direction.Neutral:
+            case InputEvent.Neutral:
                 GetComponent<Image>().enabled = false;
                 break;
-            case Direction.Right:
+            case InputEvent.Right:
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
-            case Direction.LeftUp:
+            case InputEvent.LeftUp:
                 transform.rotation = Quaternion.Euler(0, 0, 135);
                 break;
-            case Direction.Up:
+            case InputEvent.Up:
                 transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
-            case Direction.RightUp:
+            case InputEvent.RightUp:
                 transform.rotation = Quaternion.Euler(0, 0, 45);
                 break;
         }

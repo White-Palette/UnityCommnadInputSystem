@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CommandListSO")]
 public class CommandListSO : ScriptableObject
 {
-    public Direction[] inputKeys;
+    public InputEvent[] inputKeys;
     public string commandName;
 }
 

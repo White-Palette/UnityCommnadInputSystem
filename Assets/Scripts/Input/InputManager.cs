@@ -54,55 +54,56 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        CheckInputKey(_useKeyArray);
+        CheckInputKey();
 
     }
 
-    private void CheckInputKey(Key[] ks)
+    private void CheckInputKey()
     {
-        _pressingKeyCount = ks.Count(x => x.state == KeyState.Press);
+        _pressingKeyCount = _useKeyArray.Count(x => x.state == KeyState.Press);
 
         if (_pressingKeyCount != _pressedKeyCount)
         {
-            bool isAllUp = true;
-            for (int i = 0; i < _inputKeyListSO.Length; ++i)
-            {
-                InputKey inputKey = _inputKeyListSO.inputKeys[i];
-
-                KeyCode[] keyCodes = inputKey.keyCodes;
-                bool isAllPress = true;
-                for (int j = 0; j < keyCodes.Length; ++j)
-                {
-                    KeyCode keyCode = keyCodes[j];
-                    KeyState keyState = _useKeyArray.First(x => x.keyCode == keyCode).state;
-
-                    if ((int)keyState >= 2)
-                    {
-                        isAllPress = false;
-                        break;
-                    }
-                }
-
-                // 여기 조건 약간 변경해야 될듯
-                isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
-
-                if (isAllPress)
-                {
-                    isAllUp = false;
-                    InputEventManager.ExecuteEvent(inputKey.EventName);
-                }
-            }
-
-            if (isAllUp)
-            {
-                InputEventManager.ExecuteEvent(Direction.Neutral);
-            }
+            CheckCommand();
         }
     }
 
     private void CheckCommand()
     {
+        bool isAllUp = true;
 
+        for (int i = 0; i < _inputKeyListSO.Length; ++i)
+        {
+            InputKey inputKey = _inputKeyListSO.inputKeys[i];
+
+            KeyCode[] keyCodes = inputKey.keyCodes;
+            bool isAllPress = true;
+            for (int j = 0; j < keyCodes.Length; ++j)
+            {
+                KeyCode keyCode = keyCodes[j];
+                KeyState keyState = _useKeyArray.First(x => x.keyCode == keyCode).state;
+
+                if ((int)keyState >= 2)
+                {
+                    isAllPress = false;
+                    break;
+                }
+            }
+
+            // 여기 조건 약간 변경해야 될듯
+            isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
+
+            if (isAllPress)
+            {
+                isAllUp = false;
+                InputEventManager.ExecuteEvent(inputKey.EventName);
+            }
+        }
+
+        if (isAllUp)
+        {
+            InputEventManager.ExecuteEvent(InputEvent.Neutral);
+        }
     }
 }
 
