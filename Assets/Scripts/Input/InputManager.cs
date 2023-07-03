@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class InputManager : MonoBehaviour
 {
@@ -10,13 +11,10 @@ public class InputManager : MonoBehaviour
 
     [SerializeField]
     private InputKeyListSO _inputKeyListSO = null;
-    
-    [SerializeField]
-    private CommandListSO _commandListSO = null;
-    
-    private KeyCode[] _commandStartKeyArray = null;
 
     private Key[] _useKeyArray = null;
+
+    private int _pressedKeyCount = 0;
     private int _pressingKeyCount = 0;
 
     void Awake()
@@ -33,6 +31,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        _pressedKeyCount = _pressingKeyCount;
         _pressingKeyCount = 0;
 
         for (int i = 0; i < _useKeyArray.Length; ++i)
@@ -43,7 +42,6 @@ public class InputManager : MonoBehaviour
             if (Input.GetKeyDown(checkedKeyCode))
             {
                 _useKeyArray[i].state = KeyState.Down;
-                ++_pressingKeyCount;
             }
             else if (Input.GetKeyUp(checkedKeyCode))
             {
@@ -52,11 +50,6 @@ public class InputManager : MonoBehaviour
             else if (checkedKeyState == KeyState.Down)
             {
                 _useKeyArray[i].state = KeyState.Press;
-                ++_pressingKeyCount;
-            }
-            else if (checkedKeyState == KeyState.Press)
-            {
-                ++_pressingKeyCount;
             }
             else if (checkedKeyState == KeyState.Up)
             {
@@ -64,39 +57,51 @@ public class InputManager : MonoBehaviour
             }
         }
 
-        bool isAllUp = true;
-        for (int i = 0; i < _inputKeyListSO.Length; ++i)
+        CheckInputKey(_useKeyArray);
+
+    }
+
+    private void CheckInputKey(Key[] ks)
+    {
+        _pressingKeyCount = ks.Count(x => x.state == KeyState.Press);
+
+        if (_pressingKeyCount != _pressedKeyCount)
         {
-            InputKey inputKey = _inputKeyListSO.inputKeys[i];
-
-            KeyCode[] keyCodes = inputKey.keyCodes;
-            bool isAllPress = true;
-            for (int j = 0; j < keyCodes.Length; ++j)
+            bool isAllUp = true;
+            for (int i = 0; i < _inputKeyListSO.Length; ++i)
             {
-                KeyCode keyCode = keyCodes[j];
-                KeyState keyState = _useKeyArray.First(x => x.keyCode == keyCode).state;
+                InputKey inputKey = _inputKeyListSO.inputKeys[i];
 
-                if ((int)keyState >= 2)
+                KeyCode[] keyCodes = inputKey.keyCodes;
+                bool isAllPress = true;
+                for (int j = 0; j < keyCodes.Length; ++j)
                 {
-                    isAllPress = false;
-                    break;
+                    KeyCode keyCode = keyCodes[j];
+                    KeyState keyState = _useKeyArray.First(x => x.keyCode == keyCode).state;
+
+                    if ((int)keyState >= 2)
+                    {
+                        isAllPress = false;
+                        break;
+                    }
+                }
+
+                // 여기 조건 약간 변경해야 될듯
+                isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
+
+                if (isAllPress)
+                {
+                    isAllUp = false;
+                    InputEventManager.ExecuteEvent(inputKey.EventName);
                 }
             }
 
-            // 여기 조건 약간 변경해야 될듯
-            isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
-
-            if (isAllPress)
+            if (isAllUp)
             {
-                isAllUp = false;
-                InputEventManager.ExecuteEvent(inputKey.EventName);
+                _inputKeyRecordUI.InputDirectionKey(Direction.Neutral);
             }
         }
 
-        if (isAllUp)
-        {
-            _inputKeyRecordUI.InputDirectionKey(Direction.Neutral);
-        }
     }
 }
 
