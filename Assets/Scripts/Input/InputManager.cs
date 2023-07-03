@@ -13,9 +13,6 @@ public class InputManager : MonoBehaviour
     private InputDetector _inputDetector = null;
     private InputProcessor _inputProcessor = null;
 
-
-
-
     void Awake()
     {
         _inputInformation = new InputInformation(_inputKeyListSO.GetUseKeyArray());
