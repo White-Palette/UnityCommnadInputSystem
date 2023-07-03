@@ -7,9 +7,6 @@ using System;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private InputKeyRecordUI _inputKeyRecordUI = null;
-
-    [SerializeField]
     private InputKeyListSO _inputKeyListSO = null;
 
     private Key[] _useKeyArray = null;
@@ -98,15 +95,14 @@ public class InputManager : MonoBehaviour
 
             if (isAllUp)
             {
-                _inputKeyRecordUI.InputDirectionKey(Direction.Neutral);
+                InputEventManager.ExecuteEvent(Direction.Neutral);
             }
         }
+    }
+
+    private void CheckCommand()
+    {
 
     }
 }
 
-public struct Key
-{
-    public KeyCode keyCode;
-    public KeyState state;
-}
