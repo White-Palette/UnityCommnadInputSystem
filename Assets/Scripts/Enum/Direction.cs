@@ -10,8 +10,4 @@ public enum InputEvent
     LeftUp = 7,
     Up = 8,
     RightUp = 9,
-    LP,
-    RP,
-    LK,
-    RK
 }
