@@ -2,30 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputDetector
+public class InputDetector : InputInformationModifier
 {
-    public void RecognizeInput(ref Key[] keys)
+    public InputDetector(InputInformation inputInformation) : base(inputInformation) { }
+
+    public void RecognizeInput()
     {
-        for (int i = 0; i < keys.Length; ++i)
+        KeyCode[] keyCodes = InputInformation.GetKeyCodeArray();
+        KeyState[] keyStates = InputInformation.GetKeyStateArray();
+
+        for (int i = 0; i < InputInformation.KeyCount; ++i)
         {
-            KeyCode checkedKeyCode = keys[i].keyCode;
-            KeyState checkedKeyState = keys[i].state;
+            KeyCode checkedKeyCode = keyCodes[i];
+            KeyState checkedKeyState = keyStates[i];
 
             if (Input.GetKeyDown(checkedKeyCode))
             {
-                keys[i].state = KeyState.Down;
+                InputInformation.SetKeyState(checkedKeyCode, KeyState.Down);
             }
             else if (Input.GetKeyUp(checkedKeyCode))
             {
-                keys[i].state = KeyState.Up;
+                InputInformation.SetKeyState(checkedKeyCode, KeyState.Up);
             }
             else if (checkedKeyState == KeyState.Down)
             {
-                keys[i].state = KeyState.Press;
+                InputInformation.SetKeyState(checkedKeyCode, KeyState.Press);
             }
             else if (checkedKeyState == KeyState.Up)
             {
-                keys[i].state = KeyState.None;
+                InputInformation.SetKeyState(checkedKeyCode, KeyState.None);
             }
         }
     }

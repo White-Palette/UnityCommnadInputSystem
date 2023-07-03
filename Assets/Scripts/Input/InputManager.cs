@@ -12,9 +12,9 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private CommandListSO _commandListSO = null;
 
-    private InputDetector InputDetector = null;
+    private InputInformation _inputInformation = null;
 
-    private Key[] _useKeyArray = null;
+    private InputDetector _inputDetector = null;
 
     private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
 
@@ -23,16 +23,8 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
-        InputDetector = new InputDetector();
-
-        var useKeyCodeArray = _inputKeyListSO.GetUseKeyArray();
-        _useKeyArray = new Key[useKeyCodeArray.Length];
-
-        for (int i = 0; i < useKeyCodeArray.Length; ++i)
-        {
-            _useKeyArray[i].keyCode = useKeyCodeArray[i];
-            _useKeyArray[i].state = KeyState.None;
-        }
+        _inputInformation = new InputInformation(_inputKeyListSO.GetUseKeyArray());
+        _inputDetector = new InputDetector(_inputInformation);
     }
 
     private void Update()
@@ -40,14 +32,14 @@ public class InputManager : MonoBehaviour
         _pressedKeyCount = _pressingKeyCount;
         _pressingKeyCount = 0;
 
-        InputDetector.RecognizeInput(ref _useKeyArray);
+        _inputDetector.RecognizeInput();
 
         CheckInputKey();
     }
 
     private void CheckInputKey()
     {
-        _pressingKeyCount = _useKeyArray.Count(x => x.state == KeyState.Press);
+
 
         if (_pressingKeyCount != _pressedKeyCount)
         {
@@ -68,13 +60,13 @@ public class InputManager : MonoBehaviour
             for (int j = 0; j < keyCodes.Length; ++j)
             {
                 KeyCode keyCode = keyCodes[j];
-                KeyState keyState = _useKeyArray.First(x => x.keyCode == keyCode).state;
+                KeyState keyState;// = _useKeyArray.First(x => x.keyCode == keyCode).state;
 
-                if ((int)keyState >= 2)
-                {
-                    isAllPress = false;
-                    break;
-                }
+                // if ((int)keyState >= 2)
+                // {
+                //     isAllPress = false;
+                //     break;
+                // }
             }
 
             // 여기 조건 약간 변경해야 될듯
