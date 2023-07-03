@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
     private InputInformation _inputInformation = null;
 
     private InputDetector _inputDetector = null;
-    private InputEventExecutor _inputEventExecutor = null;
+    private InputProcessor _inputEventExecutor = null;
 
     private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
 
@@ -24,7 +24,7 @@ public class InputManager : MonoBehaviour
     {
         _inputInformation = new InputInformation(_inputKeyListSO.GetUseKeyArray());
         _inputDetector = new InputDetector(_inputInformation);
-        _inputEventExecutor = new InputEventExecutor(_inputInformation);
+        _inputEventExecutor = new InputProcessor(_inputInformation);
     }
 
     private void Update()

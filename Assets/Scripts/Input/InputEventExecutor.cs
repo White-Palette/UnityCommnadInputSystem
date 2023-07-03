@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputEventExecutor : InputInformationEditor
+public class InputProcessor : InputInformationEditor
 {
-    public InputEventExecutor(InputInformation inputInformation) : base(inputInformation) { }
+    public InputProcessor(InputInformation inputInformation) : base(inputInformation) { }
 
 
 }
