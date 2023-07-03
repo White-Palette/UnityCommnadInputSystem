@@ -551,7 +551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b7d8c2d46933f4ebc083655a648580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputKeyRecordUI: {fileID: 1912146662}
   _inputKeyListSO: {fileID: 11400000, guid: 87feb46aa9ecd3941a46ebcfb49fe127, type: 2}
   _commandListSO: {fileID: 11400000, guid: ddc5ace35bd73274a97143b22a56cc41, type: 2}
 --- !u!4 &916685838

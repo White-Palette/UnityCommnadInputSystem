@@ -9,7 +9,12 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InputKeyListSO _inputKeyListSO = null;
 
+    [SerializeField]
+    private CommandListSO _commandListSO = null;
+
     private Key[] _useKeyArray = null;
+
+    private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
 
     private int _pressedKeyCount = 0;
     private int _pressingKeyCount = 0;
@@ -55,7 +60,6 @@ public class InputManager : MonoBehaviour
         }
 
         CheckInputKey();
-
     }
 
     private void CheckInputKey()
@@ -97,7 +101,30 @@ public class InputManager : MonoBehaviour
             {
                 isAllUp = false;
                 InputEventManager.ExecuteEvent(inputKey.EventName);
+                _inputEventStack.Push(inputKey.EventName);
+                break;
             }
+        }
+
+        // command 입력 확인하는 코드
+        var stackTemp = new Stack<InputEvent>(_inputEventStack);
+        List<InputEvent> inputEventList = new List<InputEvent>();
+
+        int count = stackTemp.Count;
+
+        for (int i = 0; i < _commandListSO.inputKeys.Length; ++i)
+        {
+            if (count < _commandListSO.inputKeys.Length)
+            {
+                break;
+            }
+            inputEventList.Add(stackTemp.Pop());
+        }
+
+        if (inputEventList.SequenceEqual(_commandListSO.inputKeys))
+        {
+            Debug.Log(_commandListSO.commandName);
+            _inputEventStack.Clear();
         }
 
         if (isAllUp)
