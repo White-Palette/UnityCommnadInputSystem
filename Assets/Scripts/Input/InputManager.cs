@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private CommandListSO _commandListSO = null;
 
+    private InputDetector InputDetector = null;
+
     private Key[] _useKeyArray = null;
 
     private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
@@ -21,6 +23,8 @@ public class InputManager : MonoBehaviour
 
     void Awake()
     {
+        InputDetector = new InputDetector();
+
         var useKeyCodeArray = _inputKeyListSO.GetUseKeyArray();
         _useKeyArray = new Key[useKeyCodeArray.Length];
 
@@ -36,28 +40,7 @@ public class InputManager : MonoBehaviour
         _pressedKeyCount = _pressingKeyCount;
         _pressingKeyCount = 0;
 
-        for (int i = 0; i < _useKeyArray.Length; ++i)
-        {
-            KeyCode checkedKeyCode = _useKeyArray[i].keyCode;
-            KeyState checkedKeyState = _useKeyArray[i].state;
-
-            if (Input.GetKeyDown(checkedKeyCode))
-            {
-                _useKeyArray[i].state = KeyState.Down;
-            }
-            else if (Input.GetKeyUp(checkedKeyCode))
-            {
-                _useKeyArray[i].state = KeyState.Up;
-            }
-            else if (checkedKeyState == KeyState.Down)
-            {
-                _useKeyArray[i].state = KeyState.Press;
-            }
-            else if (checkedKeyState == KeyState.Up)
-            {
-                _useKeyArray[i].state = KeyState.None;
-            }
-        }
+        InputDetector.RecognizeInput(ref _useKeyArray);
 
         CheckInputKey();
     }
