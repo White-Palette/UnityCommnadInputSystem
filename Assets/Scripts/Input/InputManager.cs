@@ -18,8 +18,6 @@ public class InputManager : MonoBehaviour
 
     private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
 
-    private int _pressedKeyCount = 0;
-    private int _pressingKeyCount = 0;
 
     void Awake()
     {
@@ -29,9 +27,6 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        _pressedKeyCount = _pressingKeyCount;
-        _pressingKeyCount = 0;
-
         _inputDetector.RecognizeInput();
 
         CheckInputKey();
@@ -39,9 +34,7 @@ public class InputManager : MonoBehaviour
 
     private void CheckInputKey()
     {
-
-
-        if (_pressingKeyCount != _pressedKeyCount)
+        if (_inputInformation.IsInputChanged)
         {
             CheckCommand();
         }
@@ -60,17 +53,17 @@ public class InputManager : MonoBehaviour
             for (int j = 0; j < keyCodes.Length; ++j)
             {
                 KeyCode keyCode = keyCodes[j];
-                KeyState keyState;// = _useKeyArray.First(x => x.keyCode == keyCode).state;
+                KeyState keyState = _inputInformation.GetKeyState(keyCode);
 
-                // if ((int)keyState >= 2)
-                // {
-                //     isAllPress = false;
-                //     break;
-                // }
+                if ((int)keyState >= 2)
+                {
+                    isAllPress = false;
+                    break;
+                }
             }
 
             // 여기 조건 약간 변경해야 될듯
-            isAllPress = isAllPress && keyCodes.Length == _pressingKeyCount;
+            isAllPress = isAllPress && keyCodes.Length == _inputInformation.PressingKeyCount;
 
             if (isAllPress)
             {
