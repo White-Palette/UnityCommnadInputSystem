@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputDetector : InputInformationModifier
+public class InputDetector : InputInformationEditor
 {
     public InputDetector(InputInformation inputInformation) : base(inputInformation) { }
 

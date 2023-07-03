@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputInformationModifier
+public class InputInformationEditor
 {
     private readonly InputInformation _inputInformation = null;
     protected InputInformation InputInformation => _inputInformation;
 
-    protected InputInformationModifier(InputInformation inputInformation)
+    protected InputInformationEditor(InputInformation inputInformation)
     {
         _inputInformation = inputInformation;
     }
