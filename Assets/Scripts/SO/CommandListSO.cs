@@ -6,5 +6,6 @@ using UnityEngine;
 public class CommandListSO : ScriptableObject
 {
     public Direction[] inputKeys;
+    public string commandName;
 }
 

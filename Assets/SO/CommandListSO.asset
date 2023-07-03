@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64df809a0e838d142ad7f5d42d15aff3, type: 3}
   m_Name: CommandListSO
   m_EditorClassIdentifier: 
-  inputKeys: 06000000050000000200000003000000
+  inputKeys: 060000000200000003000000
+  commandName: "\uC18C\uB958\uAC90"

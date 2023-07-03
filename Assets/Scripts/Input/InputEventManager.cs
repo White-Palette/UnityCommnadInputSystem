@@ -1,37 +1,43 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class InputEventManager
 {
-    private static Dictionary<Direction, Action> _directionEventDictionary = new Dictionary<Direction, Action>();
+    private static Dictionary<Direction, List<Action>> _directionEventDictionary = new Dictionary<Direction, List<Action>>();
 
     public static void AddEvent(Direction direction, Action action)
     {
-        if (_directionEventDictionary.ContainsKey(direction))
+        if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {
-            _directionEventDictionary[direction] += action;
+            eventList.Add(action);
         }
         else
         {
-            _directionEventDictionary.Add(direction, action);
+            eventList = new List<Action>() { action };
+            _directionEventDictionary.Add(direction, eventList);
         }
     }
 
     public static void RemoveEvent(Direction direction, Action action)
     {
-        if (_directionEventDictionary.ContainsKey(direction))
+        if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {
-            _directionEventDictionary[direction] -= action;
+            eventList.Remove(action);
+            if (eventList.Count == 0)
+            {
+                _directionEventDictionary.Remove(direction);
+            }
         }
     }
 
     public static void ExecuteEvent(Direction direction)
     {
-        if (_directionEventDictionary.ContainsKey(direction))
+        if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {
-            _directionEventDictionary[direction]?.Invoke();
+            foreach (var action in eventList)
+            {
+                action?.Invoke();
+            }
         }
     }
 }
