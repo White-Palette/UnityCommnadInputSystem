@@ -12,7 +12,7 @@ public class InputInformation
 
     private int _pressedKeyCount = 0;
 
-    public bool IsInputChanged => _pressingKeyCount != _pressedKeyCount;
+    public bool IsInputChanged => (_pressingKeyCount != _pressedKeyCount);
 
     public InputInformation(KeyCode[] keyCodes)
     {
