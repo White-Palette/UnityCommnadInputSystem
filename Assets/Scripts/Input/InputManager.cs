@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
     {
         _inputInformation = new InputInformation(_inputKeyListSO.GetUseKeyArray());
         _inputDetector = new InputDetector(_inputInformation);
-        _inputProcessor = new InputProcessor(_inputInformation);
+        _inputProcessor = new InputProcessor(_inputInformation, _inputKeyListSO, _commandListSO);
     }
 
     private void Update()

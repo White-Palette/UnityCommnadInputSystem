@@ -5,7 +5,11 @@ using System.Linq;
 
 public class InputProcessor : InputInformationEditor
 {
-    public InputProcessor(InputInformation inputInformation) : base(inputInformation) { }
+    public InputProcessor(InputInformation inputInformation, InputKeyListSO inputKeyListSO, CommandListSO commandListSO) : base(inputInformation)
+    {
+        _inputKeyListSO = inputKeyListSO;
+        _commandListSO = commandListSO;
+    }
 
     private InputKeyListSO _inputKeyListSO = null;
     private CommandListSO _commandListSO = null;
@@ -60,24 +64,27 @@ public class InputProcessor : InputInformationEditor
         }
 
         // command 입력 확인하는 코드
-        var stackTemp = new Stack<InputEvent>(_inputEventStack);
-        List<InputEvent> inputEventList = new List<InputEvent>();
-
-        int count = stackTemp.Count;
-
-        for (int i = 0; i < _commandListSO.inputKeys.Length; ++i)
+        for (int j = 0; j < _commandListSO.commands.Length; ++j)
         {
-            if (count < _commandListSO.inputKeys.Length)
+            var stackTemp = new Stack<InputEvent>(_inputEventStack);
+            List<InputEvent> inputEventList = new List<InputEvent>();
+
+            int count = stackTemp.Count;
+
+            for (int i = 0; i < _commandListSO.commands[j].InputKeys.Length; ++i)
             {
-                break;
+                if (count < _commandListSO.commands[j].InputKeys.Length)
+                {
+                    break;
+                }
+                inputEventList.Add(stackTemp.Pop());
             }
-            inputEventList.Add(stackTemp.Pop());
-        }
 
-        if (inputEventList.SequenceEqual(_commandListSO.inputKeys))
-        {
-            Debug.Log(_commandListSO.commandName);
-            _inputEventStack.Clear();
+            if (inputEventList.SequenceEqual(_commandListSO.commands[j].InputKeys))
+            {
+                Debug.Log(_commandListSO.commands[j].CommandName);
+                _inputEventStack.Clear();
+            }
         }
 
         if (isAllUp)
