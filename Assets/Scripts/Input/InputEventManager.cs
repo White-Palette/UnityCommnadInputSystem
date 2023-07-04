@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public static class InputEventManager
 {
-    private static Dictionary<InputEvent, List<Action>> _directionEventDictionary = new Dictionary<InputEvent, List<Action>>();
+    private static Dictionary<Direction, List<Action>> _directionEventDictionary = new Dictionary<Direction, List<Action>>();
 
-    public static void AddEvent(InputEvent direction, Action action)
+    public static void AddEvent(Direction direction, Action action)
     {
         if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {
@@ -18,7 +18,7 @@ public static class InputEventManager
         }
     }
 
-    public static void RemoveEvent(InputEvent direction, Action action)
+    public static void RemoveEvent(Direction direction, Action action)
     {
         if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {
@@ -30,7 +30,7 @@ public static class InputEventManager
         }
     }
 
-    public static void ExecuteEvent(InputEvent direction)
+    public static void ExecuteEvent(Direction direction)
     {
         if (_directionEventDictionary.TryGetValue(direction, out var eventList))
         {

@@ -5,14 +5,12 @@ using UnityEngine;
 public class InputActionKeyRecordUI : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _inputKeyPrefab = null;
+    private GameObject _inputButtonImagePrefab = null;
 
-    private RectTransform rectTransform = null;
-    private Queue<DirectionImageController> _inputKeyQueue = new Queue<DirectionImageController>();
+    private Queue<ActionImageController> _inputKeyQueue = new Queue<ActionImageController>();
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
 
 
     }

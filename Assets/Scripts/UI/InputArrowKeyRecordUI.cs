@@ -8,26 +8,23 @@ public class InputArrowKeyRecordUI : MonoBehaviour
     [SerializeField]
     private GameObject _inputKeyPrefab = null;
 
-    private RectTransform rectTransform = null;
     private Queue<DirectionImageController> _inputKeyQueue = new Queue<DirectionImageController>();
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        InputEventManager.AddEvent(Direction.Up, () => InputDirectionKey(Direction.Up));
+        InputEventManager.AddEvent(Direction.Down, () => InputDirectionKey(Direction.Down));
+        InputEventManager.AddEvent(Direction.Left, () => InputDirectionKey(Direction.Left));
+        InputEventManager.AddEvent(Direction.Right, () => InputDirectionKey(Direction.Right));
+        InputEventManager.AddEvent(Direction.LeftUp, () => InputDirectionKey(Direction.LeftUp));
+        InputEventManager.AddEvent(Direction.LeftDown, () => InputDirectionKey(Direction.LeftDown));
+        InputEventManager.AddEvent(Direction.RightUp, () => InputDirectionKey(Direction.RightUp));
+        InputEventManager.AddEvent(Direction.RightDown, () => InputDirectionKey(Direction.RightDown));
 
-        InputEventManager.AddEvent(InputEvent.Up, () => InputDirectionKey(InputEvent.Up));
-        InputEventManager.AddEvent(InputEvent.Down, () => InputDirectionKey(InputEvent.Down));
-        InputEventManager.AddEvent(InputEvent.Left, () => InputDirectionKey(InputEvent.Left));
-        InputEventManager.AddEvent(InputEvent.Right, () => InputDirectionKey(InputEvent.Right));
-        InputEventManager.AddEvent(InputEvent.LeftUp, () => InputDirectionKey(InputEvent.LeftUp));
-        InputEventManager.AddEvent(InputEvent.LeftDown, () => InputDirectionKey(InputEvent.LeftDown));
-        InputEventManager.AddEvent(InputEvent.RightUp, () => InputDirectionKey(InputEvent.RightUp));
-        InputEventManager.AddEvent(InputEvent.RightDown, () => InputDirectionKey(InputEvent.RightDown));
-
-        InputEventManager.AddEvent(InputEvent.Neutral, () => InputDirectionKey(InputEvent.Neutral));
+        InputEventManager.AddEvent(Direction.Neutral, () => InputDirectionKey(Direction.Neutral));
     }
 
-    public void InputDirectionKey(InputEvent direction)
+    public void InputDirectionKey(Direction direction)
     {
         var keyUI = Instantiate(_inputKeyPrefab, transform).GetComponent<DirectionImageController>();
         keyUI.SetDirection(direction);

@@ -1,5 +1,5 @@
 
-public enum InputEvent
+public enum Direction
 {
     LeftDown = 1,
     Down = 2,

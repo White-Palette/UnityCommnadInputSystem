@@ -8,39 +8,39 @@ public class DirectionImageController : MonoBehaviour
     [SerializeField]
     private Image _image = null;
 
-    private InputEvent _key = InputEvent.Neutral;
+    private Direction _key = Direction.Neutral;
 
-    public void SetDirection(InputEvent eventType)
+    public void SetDirection(Direction eventType)
     {
         this._key = eventType;
 
         switch (_key)
         {
-            case InputEvent.LeftDown:
+            case Direction.LeftDown:
                 transform.rotation = Quaternion.Euler(0, 0, 225);
                 break;
-            case InputEvent.Down:
+            case Direction.Down:
                 transform.rotation = Quaternion.Euler(0, 0, 270);
                 break;
-            case InputEvent.RightDown:
+            case Direction.RightDown:
                 transform.rotation = Quaternion.Euler(0, 0, 315);
                 break;
-            case InputEvent.Left:
+            case Direction.Left:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
-            case InputEvent.Neutral:
+            case Direction.Neutral:
                 _image.enabled = false;
                 break;
-            case InputEvent.Right:
+            case Direction.Right:
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
-            case InputEvent.LeftUp:
+            case Direction.LeftUp:
                 transform.rotation = Quaternion.Euler(0, 0, 135);
                 break;
-            case InputEvent.Up:
+            case Direction.Up:
                 transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
-            case InputEvent.RightUp:
+            case Direction.RightUp:
                 transform.rotation = Quaternion.Euler(0, 0, 45);
                 break;
         }

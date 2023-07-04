@@ -14,7 +14,7 @@ public class InputProcessor : InputInformationEditor
     private InputKeyListSO _inputKeyListSO = null;
     private CommandListSO _commandListSO = null;
 
-    private Stack<InputEvent> _inputEventStack = new Stack<InputEvent>();
+    private Stack<Direction> _inputEventStack = new Stack<Direction>();
 
     public void Process()
     {
@@ -66,8 +66,8 @@ public class InputProcessor : InputInformationEditor
         // command 입력 확인하는 코드
         for (int j = 0; j < _commandListSO.commands.Length; ++j)
         {
-            var stackTemp = new Stack<InputEvent>(_inputEventStack);
-            List<InputEvent> inputEventList = new List<InputEvent>();
+            var stackTemp = new Stack<Direction>(_inputEventStack);
+            List<Direction> inputEventList = new List<Direction>();
 
             int count = stackTemp.Count;
 
@@ -89,7 +89,7 @@ public class InputProcessor : InputInformationEditor
 
         if (isAllUp)
         {
-            InputEventManager.ExecuteEvent(InputEvent.Neutral);
+            InputEventManager.ExecuteEvent(Direction.Neutral);
         }
     }
 }

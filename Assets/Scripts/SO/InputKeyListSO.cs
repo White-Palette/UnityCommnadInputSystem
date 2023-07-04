@@ -30,7 +30,7 @@ public class InputKey
     public KeyCode[] keyCodes;
 
     [SerializeField]
-    private InputEvent eventName = InputEvent.Neutral;
+    private Direction eventName = Direction.Neutral;
 
-    public InputEvent EventName => eventName;
+    public Direction EventName => eventName;
 }
