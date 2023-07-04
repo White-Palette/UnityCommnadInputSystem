@@ -7,9 +7,6 @@ using System;
 
 public class DirectionImageController : ImageBaseController<Direction>
 {
-    [SerializeField]
-    private Image _image = null;
-
     private Direction _key = Direction.Neutral;
 
     public override void SetImage(Direction eventType)

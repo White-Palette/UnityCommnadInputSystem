@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ImageBaseController<T> : MonoBehaviour where T : Enum
 {
-    private Image _image = null;
+    protected Image _image = null;
 
     private void Awake()
     {
