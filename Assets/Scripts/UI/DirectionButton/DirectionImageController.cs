@@ -1,18 +1,20 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class DirectionImageController : MonoBehaviour
+public class DirectionImageController : ImageBaseController<Direction>
 {
     [SerializeField]
     private Image _image = null;
 
     private Direction _key = Direction.Neutral;
 
-    public void SetDirection(Direction eventType)
+    public override void SetImage(Direction eventType)
     {
-        this._key = eventType;
+        _key = eventType;
 
         switch (_key)
         {
