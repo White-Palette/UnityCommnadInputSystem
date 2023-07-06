@@ -6,4 +6,14 @@ public class VirtualButton : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] _buttonInputEffects = null;
+
+    private void Start()
+    {
+
+    }
+
+    private void UpdateButtonInputState()
+    {
+
+    }
 }
