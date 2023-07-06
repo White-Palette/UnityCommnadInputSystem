@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputArrowKeyRecordUI : InputButtonBaseRecorder<Direction>
+public class InputArrowButtonRecordUI : InputButtonBaseRecorder<Direction>
 {
     protected override void Start()
     {

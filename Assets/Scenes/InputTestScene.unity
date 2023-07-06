@@ -200,7 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d23ef9ab1502a4dbc0ecbde1fc5d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputButtonImagePrefab: {fileID: 0}
 --- !u!1 &618669218
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4bbd3c2b8288a40a12787761cc264f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 809767524}
 --- !u!114 &809767524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,11 +781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d550b6bb40360c42889c684deaa3de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionSprites:
-  - {fileID: 21300000, guid: e70c85023308fd54eb3d28daa708c3aa, type: 3}
-  - {fileID: 21300000, guid: cb151030d6fbfdc4f886502444823ed3, type: 3}
-  - {fileID: 21300000, guid: 68f147f3a8e9dc64f94129c8c0bcc1a5, type: 3}
-  - {fileID: 21300000, guid: b133b2db0a585404087625c431b943e8, type: 3}
 --- !u!114 &1141015728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,4 +896,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf55bd11fe5ae9d4e81c305e2f2bac55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputKeyPrefab: {fileID: 809767521}
