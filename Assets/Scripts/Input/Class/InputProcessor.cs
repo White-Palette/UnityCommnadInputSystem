@@ -47,7 +47,6 @@ public class InputProcessor : InputInformationEditor
                 if ((int)keyState >= 2)
                 {
                     isAllPress = false;
-                    break;
                 }
             }
 
@@ -59,7 +58,6 @@ public class InputProcessor : InputInformationEditor
                 isAllUp = false;
                 InputEventManager.ExecuteEvent(inputButton.EventName);
                 _inputEventStack.Push(inputButton.EventName);
-                break;
             }
         }
 
