@@ -285,6 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 166649766}
+  - component: {fileID: 166649767}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -313,6 +314,23 @@ RectTransform:
   m_AnchoredPosition: {x: -393.8, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &166649767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166649765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238e8dcecc98563429c238f3404632f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonInputEffects:
+  - {fileID: 843223302}
+  - {fileID: 596688609}
+  - {fileID: 9126504}
+  - {fileID: 1076998787}
 --- !u!1 &174801486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1313,6 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1052345601}
+  - component: {fileID: 1052345602}
   m_Layer: 5
   m_Name: JoyStick
   m_TagString: Untagged
@@ -1341,6 +1360,18 @@ RectTransform:
   m_AnchoredPosition: {x: 350, y: 0}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1052345602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052345600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0f1e3617af87f4f8e70e415f31c7df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1076998787
 GameObject:
   m_ObjectHideFlags: 0
