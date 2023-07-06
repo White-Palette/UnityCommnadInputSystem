@@ -28,7 +28,7 @@ public class DirectionImageController : ImageBaseController<Direction>
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
             case Direction.Neutral:
-                _image.enabled = false;
+                CommandImage.enabled = false;
                 break;
             case Direction.Right:
                 transform.rotation = Quaternion.Euler(0, 0, 0);

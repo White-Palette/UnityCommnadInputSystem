@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionImageController : MonoBehaviour
+public class ActionImageController : ImageBaseController<Button>
 {
-    [SerializeField]
-    private Sprite[] _actionSprites = null;
+    public override void SetImage(Button eventType)
+    {
 
-
+    }
 }
