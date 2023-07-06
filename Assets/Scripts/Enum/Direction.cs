@@ -1,4 +1,5 @@
 
+using System.ComponentModel;
 public enum Direction
 {
     LeftDown = 1,
@@ -10,4 +11,8 @@ public enum Direction
     LeftUp = 7,
     Up = 8,
     RightUp = 9,
+    LP,
+    RP,
+    LK,
+    RK,
 }

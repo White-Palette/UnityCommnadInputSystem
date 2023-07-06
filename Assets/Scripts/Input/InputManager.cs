@@ -3,21 +3,21 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField]
-    private InputKeyListSO _inputKeyListSO = null;
+    private InputButtonListSO _inputButtonListSO = null;
 
     [SerializeField]
     private CommandListSO _commandListSO = null;
 
     private InputInformation _inputInformation = null;
 
-    private InputDetector _inputDetector = null;
+    private ButtonInputDetector _inputDetector = null;
     private InputProcessor _inputProcessor = null;
 
-    void Awake()
+    private void Awake()
     {
-        _inputInformation = new InputInformation(_inputKeyListSO.GetUseKeyArray());
-        _inputDetector = new InputDetector(_inputInformation);
-        _inputProcessor = new InputProcessor(_inputInformation, _inputKeyListSO, _commandListSO);
+        _inputInformation = new InputInformation(_inputButtonListSO.GetUseKeyArray());
+        _inputDetector = new ButtonInputDetector(_inputInformation);
+        _inputProcessor = new InputProcessor(_inputInformation, _inputButtonListSO, _commandListSO);
     }
 
     private void Update()

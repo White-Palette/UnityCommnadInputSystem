@@ -5,13 +5,13 @@ using System.Linq;
 
 public class InputProcessor : InputInformationEditor
 {
-    public InputProcessor(InputInformation inputInformation, InputKeyListSO inputKeyListSO, CommandListSO commandListSO) : base(inputInformation)
+    public InputProcessor(InputInformation inputInformation, InputButtonListSO inputKeyListSO, CommandListSO commandListSO) : base(inputInformation)
     {
         _inputKeyListSO = inputKeyListSO;
         _commandListSO = commandListSO;
     }
 
-    private InputKeyListSO _inputKeyListSO = null;
+    private InputButtonListSO _inputKeyListSO = null;
     private CommandListSO _commandListSO = null;
 
     private Stack<Direction> _inputEventStack = new Stack<Direction>();
@@ -35,9 +35,9 @@ public class InputProcessor : InputInformationEditor
 
         for (int i = 0; i < _inputKeyListSO.Length; ++i)
         {
-            InputKey inputKey = _inputKeyListSO.inputKeys[i];
+            InputButton inputButton = _inputKeyListSO.inputKeys[i];
 
-            KeyCode[] keyCodes = inputKey.keyCodes;
+            KeyCode[] keyCodes = inputButton.keyCodes;
             bool isAllPress = true;
             for (int j = 0; j < keyCodes.Length; ++j)
             {
@@ -57,8 +57,8 @@ public class InputProcessor : InputInformationEditor
             if (isAllPress)
             {
                 isAllUp = false;
-                InputEventManager.ExecuteEvent(inputKey.EventName);
-                _inputEventStack.Push(inputKey.EventName);
+                InputEventManager.ExecuteEvent(inputButton.EventName);
+                _inputEventStack.Push(inputButton.EventName);
                 break;
             }
         }

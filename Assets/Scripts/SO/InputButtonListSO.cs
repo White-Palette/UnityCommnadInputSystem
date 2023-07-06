@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-[CreateAssetMenu(fileName = "InputKeyListSO")]
-public class InputKeyListSO : ScriptableObject
+[CreateAssetMenu(fileName = "InputButtonListSO")]
+public class InputButtonListSO : ScriptableObject
 {
-    public InputKey[] inputKeys;
+    public InputButton[] inputKeys;
 
     public int Length => inputKeys.Length;
 
@@ -25,7 +25,7 @@ public class InputKeyListSO : ScriptableObject
 }
 
 [Serializable]
-public class InputKey
+public class InputButton
 {
     public KeyCode[] keyCodes;
 

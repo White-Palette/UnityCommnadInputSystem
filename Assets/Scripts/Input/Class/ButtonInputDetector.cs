@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputDetector : InputInformationEditor
+public class ButtonInputDetector : InputInformationEditor
 {
-    public InputDetector(InputInformation inputInformation) : base(inputInformation) { }
+    public ButtonInputDetector(InputInformation inputInformation) : base(inputInformation) { }
 
     public void RecognizeInput()
     {
