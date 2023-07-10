@@ -9,7 +9,7 @@ public class ActionImageController : ImageBaseController<Direction>
 
     public override void SetImage(Direction eventType)
     {
-        
+        CommandImage.sprite = _buttonSprites[(int)eventType];
 
         gameObject.SetActive(true);
     }

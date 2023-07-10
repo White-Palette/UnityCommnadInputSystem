@@ -14,6 +14,9 @@ public class VirtualButton : MonoBehaviour
 
     private void UpdateButtonInputState()
     {
-
+        for (int i = 0; i < _buttonInputEffects.Length; i++)
+        {
+            _buttonInputEffects[i].SetActive(true);
+        }
     }
 }

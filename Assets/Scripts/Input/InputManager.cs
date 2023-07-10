@@ -5,9 +5,6 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private InputButtonListSO _inputButtonListSO = null;
 
-    [SerializeField]
-    private CommandListSO _commandListSO = null;
-
     private InputInformation _inputInformation = null;
 
     private ButtonInputDetector _inputDetector = null;
@@ -21,7 +18,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         _inputDetector.RecognizeInput();
-        
+
     }
 }
 
