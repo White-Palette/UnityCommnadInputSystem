@@ -15,16 +15,16 @@ public class VirtualStick : MonoBehaviour
 
     private void Start()
     {
-        InputEventManager.AddEvent(Direction.LeftDown, () => MoveStick(-_moveDistance, -_moveDistance) );
-        InputEventManager.AddEvent(Direction.Down, () => MoveStick(0f, -_moveDistance) );
-        InputEventManager.AddEvent(Direction.RightDown, () => MoveStick(_moveDistance, -_moveDistance) );
-        InputEventManager.AddEvent(Direction.Left, () => MoveStick(-_moveDistance, 0f) );
-        InputEventManager.AddEvent(Direction.Right, () => MoveStick(_moveDistance, 0f) );
-        InputEventManager.AddEvent(Direction.LeftUp, () => MoveStick(-_moveDistance, _moveDistance) );
-        InputEventManager.AddEvent(Direction.Up, () => MoveStick(0f, _moveDistance) );
-        InputEventManager.AddEvent(Direction.RightUp, () => MoveStick(_moveDistance, _moveDistance) );
-        
-        InputEventManager.AddEvent(Direction.Neutral, () => MoveStick(0f, 0f) );
+        InputEventManager.AddEvent("1", () => MoveStick(-_moveDistance, -_moveDistance));
+        InputEventManager.AddEvent("2", () => MoveStick(0f, -_moveDistance));
+        InputEventManager.AddEvent("3", () => MoveStick(_moveDistance, -_moveDistance));
+        InputEventManager.AddEvent("4", () => MoveStick(-_moveDistance, 0f));
+        InputEventManager.AddEvent("6", () => MoveStick(_moveDistance, 0f));
+        InputEventManager.AddEvent("7", () => MoveStick(-_moveDistance, _moveDistance));
+        InputEventManager.AddEvent("8", () => MoveStick(0f, _moveDistance));
+        InputEventManager.AddEvent("9", () => MoveStick(_moveDistance, _moveDistance));
+
+        InputEventManager.AddEvent("N", () => MoveStick(0f, 0f));
     }
 
     public void MoveStick(float posX, float posY)

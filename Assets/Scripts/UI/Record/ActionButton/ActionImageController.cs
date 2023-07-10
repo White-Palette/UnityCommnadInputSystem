@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionImageController : ImageBaseController<Direction>
+public class ActionImageController : ImageBaseController<string>
 {
     [SerializeField]
     private Sprite[] _buttonSprites = null;
 
-    public override void SetImage(Direction eventType)
+    public override void SetImage(string eventType)
     {
-        CommandImage.sprite = _buttonSprites[(int)eventType];
+        CommandImage.sprite = _buttonSprites[0];
 
         gameObject.SetActive(true);
     }

@@ -13,8 +13,8 @@ public class CommandListSO : ScriptableObject
 public class Command
 {
     [SerializeField]
-    private Direction[] inputKeys;
-    public Direction[] InputKeys => inputKeys;
+    private @string[] inputKeys;
+    public @string[] InputKeys => inputKeys;
 
     [SerializeField]
     private string commandName;

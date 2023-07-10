@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class InputButtonBaseRecorder<T> : MonoBehaviour where T : Enum
+public abstract class InputButtonBaseRecorder<T> : MonoBehaviour
 {
     private ImageBaseController<T> _imageBaseController = null;
 

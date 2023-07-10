@@ -5,41 +5,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class DirectionImageController : ImageBaseController<Direction>
+public class DirectionImageController : ImageBaseController<string>
 {
-    private Direction _key = Direction.Neutral;
+    private string _key = string.Empty;
 
-    public override void SetImage(Direction eventType)
+    public override void SetImage(string eventType)
     {
         _key = eventType;
 
         switch (_key)
         {
-            case Direction.LeftDown:
+            case "1":
                 transform.rotation = Quaternion.Euler(0, 0, 225);
                 break;
-            case Direction.Down:
+            case "2":
                 transform.rotation = Quaternion.Euler(0, 0, 270);
                 break;
-            case Direction.RightDown:
+            case "3":
                 transform.rotation = Quaternion.Euler(0, 0, 315);
                 break;
-            case Direction.Left:
+            case "4":
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
-            case Direction.Neutral:
+            case "N":
                 CommandImage.enabled = false;
                 break;
-            case Direction.Right:
+            case "6":
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
-            case Direction.LeftUp:
+            case "7":
                 transform.rotation = Quaternion.Euler(0, 0, 135);
                 break;
-            case Direction.Up:
+            case "8":
                 transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
-            case Direction.RightUp:
+            case "9":
                 transform.rotation = Quaternion.Euler(0, 0, 45);
                 break;
         }

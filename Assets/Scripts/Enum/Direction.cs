@@ -1,6 +1,6 @@
 
 using System.ComponentModel;
-public enum Direction
+public enum @string
 {
     LeftDown = 1,
     Down = 2,

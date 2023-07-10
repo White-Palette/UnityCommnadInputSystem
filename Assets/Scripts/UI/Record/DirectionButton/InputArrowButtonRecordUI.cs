@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputArrowButtonRecordUI : InputButtonBaseRecorder<Direction>
+public class InputArrowButtonRecordUI : InputButtonBaseRecorder<string>
 {
     protected override void Start()
     {
-        InputEventManager.AddEvent(Direction.Up, () => ButtonSetting(Direction.Up));
-        InputEventManager.AddEvent(Direction.Down, () => ButtonSetting(Direction.Down));
-        InputEventManager.AddEvent(Direction.Left, () => ButtonSetting(Direction.Left));
-        InputEventManager.AddEvent(Direction.Right, () => ButtonSetting(Direction.Right));
-        InputEventManager.AddEvent(Direction.LeftUp, () => ButtonSetting(Direction.LeftUp));
-        InputEventManager.AddEvent(Direction.LeftDown, () => ButtonSetting(Direction.LeftDown));
-        InputEventManager.AddEvent(Direction.RightUp, () => ButtonSetting(Direction.RightUp));
-        InputEventManager.AddEvent(Direction.RightDown, () => ButtonSetting(Direction.RightDown));
+        InputEventManager.AddEvent("8", () => ButtonSetting("8"));
+        InputEventManager.AddEvent("2", () => ButtonSetting("2"));
+        InputEventManager.AddEvent("4", () => ButtonSetting("4"));
+        InputEventManager.AddEvent("6", () => ButtonSetting("6"));
+        InputEventManager.AddEvent("7", () => ButtonSetting("7"));
+        InputEventManager.AddEvent("1", () => ButtonSetting("1"));
+        InputEventManager.AddEvent("9", () => ButtonSetting("9"));
+        InputEventManager.AddEvent("3", () => ButtonSetting("3"));
 
-        InputEventManager.AddEvent(Direction.Neutral, () => ButtonSetting(Direction.Neutral));
+        InputEventManager.AddEvent("N", () => ButtonSetting("N"));
     }
 }

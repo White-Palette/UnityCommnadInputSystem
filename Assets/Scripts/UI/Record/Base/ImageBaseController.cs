@@ -2,7 +2,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 
-public abstract class ImageBaseController<T> : MonoBehaviour where T : Enum
+public abstract class ImageBaseController<T> : MonoBehaviour
 {
     private Image _image = null;
     protected Image CommandImage => _image ??= GetComponent<Image>();
