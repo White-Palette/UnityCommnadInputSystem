@@ -13,6 +13,17 @@ public class InputActionExecutor : InputInformationEditor
 
     public void CheckAndExecutor()
     {
+        var k = InputInformation.GetKeyCodeArray();
+        var s = InputInformation.GetKeyStateArray();
 
+        for (int i = 0; i < _inputActionSO._inputActionMappings.Length; ++i)
+        {
+            var inputActionMapping = _inputActionSO._inputActionMappings[i];
+
+            for (int j = 0; j < k.Length; ++j)
+            {
+
+            }
+        }
     }
 }
