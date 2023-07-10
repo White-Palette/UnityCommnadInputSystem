@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class DirectionImageController : ImageBaseController<string>
+public class DirectionImageController : BaseImageController<string>
 {
     private string _key = string.Empty;
 

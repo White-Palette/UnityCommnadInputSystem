@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionImageController : ImageBaseController<string>
+public class ActionImageController : BaseImageController<string>
 {
     [SerializeField]
     private Sprite[] _buttonSprites = null;

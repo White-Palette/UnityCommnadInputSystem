@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputActionButtonRecordUI : InputButtonBaseRecorder<string>
+public class InputActionButtonRecordUI : BaseInputButtonRecorder<string>
 {
     protected override void Start()
     {
