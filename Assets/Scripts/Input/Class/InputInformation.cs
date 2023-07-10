@@ -5,23 +5,23 @@ using System.Linq;
 
 public class InputInformation
 {
-    private readonly Dictionary<EnableButton, KeyState> _keyStateDictionary = null;
-    public IReadOnlyDictionary<EnableButton, KeyState> KeyStateDictionary => _keyStateDictionary;
+    private readonly Dictionary<EnableDirection, KeyState> _keyStateDictionary = null;
+    public IReadOnlyDictionary<EnableDirection, KeyState> KeyStateDictionary => _keyStateDictionary;
 
     private int _pressingCount = 0;
     public int PressingCount => _pressingCount;
 
     public InputInformation()
     {
-        _keyStateDictionary = new Dictionary<EnableButton, KeyState>();
+        _keyStateDictionary = new Dictionary<EnableDirection, KeyState>();
 
-        for (int i = 0; i < Enum.GetValues(typeof(EnableButton)).Length; ++i)
+        for (int i = 0; i < Enum.GetValues(typeof(EnableDirection)).Length; ++i)
         {
-            _keyStateDictionary.Add((EnableButton)i, KeyState.None);
+            _keyStateDictionary.Add((EnableDirection)i, KeyState.None);
         }
     }
 
-    public void SetKeyState(EnableButton enableButton, KeyState keyState)
+    public void SetKeyState(EnableDirection enableButton, KeyState keyState)
     {
         _keyStateDictionary[enableButton] = keyState;
         SetPressingCount();

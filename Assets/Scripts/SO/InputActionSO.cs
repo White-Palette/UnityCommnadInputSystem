@@ -10,6 +10,6 @@ public class InputActionSO : ScriptableObject
 [Serializable]
 public class InputActionMapping
 {
-    public EnableButton[] EnableButton;
+    public EnableDirection[] EnableButton;
     public string InputName;
 }
