@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class InputActionExecutor : InputInformationEditor
 {
@@ -13,17 +14,12 @@ public class InputActionExecutor : InputInformationEditor
 
     public void CheckAndExecutor()
     {
-        var k = InputInformation.GetKeyCodeArray();
-        var s = InputInformation.GetKeyStateArray();
-
-        for (int i = 0; i < _inputActionSO._inputActionMappings.Length; ++i)
+        _inputActionSO._inputActionMappings.ToList().ForEach(inputActionMapping =>
         {
-            var inputActionMapping = _inputActionSO._inputActionMappings[i];
-
-            for (int j = 0; j < k.Length; ++j)
+            if (inputActionMapping.EnableButton.ToList().TrueForAll(enableButton => InputInformation.KeyStateDictionary[enableButton] == KeyState.Press) && inputActionMapping.EnableButton.Length == InputInformation.PressingCount)
             {
-
+                InputEventManager.ExecuteEvent(inputActionMapping.InputName);
             }
-        }
+        });
     }
 }

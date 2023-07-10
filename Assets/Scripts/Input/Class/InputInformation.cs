@@ -1,51 +1,34 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
 public class InputInformation
 {
-    private Dictionary<KeyCode, KeyState> _keyDictionary = new();
+    private readonly Dictionary<EnableButton, KeyState> _keyStateDictionary = null;
+    public IReadOnlyDictionary<EnableButton, KeyState> KeyStateDictionary => _keyStateDictionary;
 
-    private int _pressingKeyCount = 0;
-    public int PressingKeyCount => _pressingKeyCount;
+    private int _pressingCount = 0;
+    public int PressingCount => _pressingCount;
 
-    private int _pressedKeyCount = 0;
-
-    public bool IsInputChanged => (_pressingKeyCount != _pressedKeyCount);
-
-    public InputInformation(KeyCode[] keyCodes)
+    public InputInformation()
     {
-        for (int i = 0; i < keyCodes.Length; ++i)
+        _keyStateDictionary = new Dictionary<EnableButton, KeyState>();
+
+        for (int i = 0; i < Enum.GetValues(typeof(EnableButton)).Length; ++i)
         {
-            _keyDictionary.Add(keyCodes[i], KeyState.None);
+            _keyStateDictionary.Add((EnableButton)i, KeyState.None);
         }
     }
 
-    public KeyCode[] GetKeyCodeArray() => _keyDictionary.Keys.ToArray();
-    public KeyState[] GetKeyStateArray() => _keyDictionary.Values.ToArray();
-
-    public KeyState GetKeyState(KeyCode keyCode) => _keyDictionary[keyCode];
-
-    public void SetKeyState(KeyCode keyCode, KeyState keyState)
+    public void SetKeyState(EnableButton enableButton, KeyState keyState)
     {
-        _keyDictionary[keyCode] = keyState;
-        UpdateKeyPressCount();
+        _keyStateDictionary[enableButton] = keyState;
+        SetPressingCount();
     }
 
-    public int KeyCount => _keyDictionary.Count;
-
-    private void UpdateKeyPressCount()
+    private void SetPressingCount()
     {
-        _pressedKeyCount = _pressingKeyCount;
-        _pressingKeyCount = 0;
-
-        foreach (KeyState keyState in _keyDictionary.Values)
-        {
-            if ((int)keyState < 2)
-            {
-                ++_pressingKeyCount;
-            }
-        }
+        _pressingCount = _keyStateDictionary.Values.Count(keyState => (int)keyState < 2);
     }
 }

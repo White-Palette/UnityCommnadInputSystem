@@ -1,36 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ButtonInputDetector : InputInformationEditor
 {
-    public ButtonInputDetector(InputInformation inputInformation) : base(inputInformation) { }
+    public ButtonInputDetector(InputInformation inputInformation, ButtonSettingSO buttonSettingSO) : base(inputInformation)
+    {
+        _buttonSettingSO = buttonSettingSO;
+    }
+
+    private ButtonSettingSO _buttonSettingSO = null;
 
     public void RecognizeInput()
     {
-        KeyCode[] keyCodes = InputInformation.GetKeyCodeArray();
-        KeyState[] keyStates = InputInformation.GetKeyStateArray();
+        KeyCode[] mappingKeyCodes = new KeyCode[Enum.GetValues(typeof(EnableButton)).Length];
 
-        for (int i = 0; i < InputInformation.KeyCount; ++i)
+        for (int i = 0; i < Enum.GetValues(typeof(EnableButton)).Length; ++i)
         {
-            KeyCode checkedKeyCode = keyCodes[i];
-            KeyState checkedKeyState = keyStates[i];
+            mappingKeyCodes[i] = _buttonSettingSO._buttonMappings[i].KeyCode;
+        }
 
-            if (Input.GetKeyDown(checkedKeyCode))
+        for (int i = 0; i < Enum.GetValues(typeof(EnableButton)).Length; ++i)
+        {
+            if (Input.GetKeyDown(mappingKeyCodes[i]))
             {
-                InputInformation.SetKeyState(checkedKeyCode, KeyState.Down);
+                InputInformation.SetKeyState((EnableButton)i, KeyState.Down);
             }
-            else if (Input.GetKeyUp(checkedKeyCode))
+            else if (Input.GetKeyUp(mappingKeyCodes[i]))
             {
-                InputInformation.SetKeyState(checkedKeyCode, KeyState.Up);
+                InputInformation.SetKeyState((EnableButton)i, KeyState.Up);
             }
-            else if (checkedKeyState == KeyState.Down)
+            else if (InputInformation.KeyStateDictionary[(EnableButton)i] == KeyState.Down)
             {
-                InputInformation.SetKeyState(checkedKeyCode, KeyState.Press);
+                InputInformation.SetKeyState((EnableButton)i, KeyState.Press);
             }
-            else if (checkedKeyState == KeyState.Up)
+            else if (InputInformation.KeyStateDictionary[(EnableButton)i] == KeyState.Up)
             {
-                InputInformation.SetKeyState(checkedKeyCode, KeyState.None);
+                InputInformation.SetKeyState((EnableButton)i, KeyState.None);
             }
         }
     }

@@ -15,15 +15,8 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        KeyCode[] keyCodes = new KeyCode[_buttonSettingSO._buttonMappings.Length];
-
-        for (int i = 0; i < _buttonSettingSO._buttonMappings.Length; ++i)
-        {
-            keyCodes[i] = _buttonSettingSO._buttonMappings[i].KeyCode;
-        }
-
-        _inputInformation = new InputInformation(keyCodes);
-        _inputDetector = new ButtonInputDetector(_inputInformation);
+        _inputInformation = new InputInformation();
+        _inputDetector = new ButtonInputDetector(_inputInformation, _buttonSettingSO);
         _inputActionExecutor = new InputActionExecutor(_inputInformation, _inputActionSO);
     }
 
