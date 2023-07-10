@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ButtonInputDetector : InputInformationEditor
+public class ButtonInputDetector : BaseInputInformationEditor
 {
     public ButtonInputDetector(InputInformation inputInformation, ButtonSettingSO buttonSettingSO) : base(inputInformation)
     {

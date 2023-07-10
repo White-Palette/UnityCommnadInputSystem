@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class InputActionExecutor : InputInformationEditor
+public class InputActionExecutor : BaseInputInformationEditor
 {
     private readonly InputActionSO _inputActionSO = null;
 
