@@ -10,6 +10,6 @@ public class ButtonSettingSO : ScriptableObject
 [Serializable]
 public class ButtonMapping
 {
-    public EnableDirection EnableButton;
+    public EnableButton EnableButton;
     public KeyCode KeyCode;
 }

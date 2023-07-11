@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class InputActionExecutor : BaseInputInformationEditor
+public class InputActionExecutor : BaseInputInformationEditor<EnableDirection>
 {
     private readonly InputActionSO _inputActionSO = null;
 
-    public InputActionExecutor(InputInformation inputInformation, InputActionSO inputActionSO) : base(inputInformation)
+    public InputActionExecutor(InputDirectionInformation inputInformation, InputActionSO inputActionSO) : base(inputInformation)
     {
         _inputActionSO = inputActionSO;
     }

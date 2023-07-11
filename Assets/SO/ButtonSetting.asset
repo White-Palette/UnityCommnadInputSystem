@@ -9,23 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c370ec149c67a14ca3c4015cb95cf63, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c9a8173514a29044bc22f3be8fc1317, type: 3}
   m_Name: ButtonSetting
   m_EditorClassIdentifier: 
   _buttonMappings:
   - EnableButton: 0
-    KeyCode: 97
-  - EnableButton: 1
-    KeyCode: 100
-  - EnableButton: 2
-    KeyCode: 119
-  - EnableButton: 3
-    KeyCode: 115
-  - EnableButton: 4
     KeyCode: 117
-  - EnableButton: 5
+  - EnableButton: 1
     KeyCode: 105
-  - EnableButton: 6
+  - EnableButton: 2
     KeyCode: 106
-  - EnableButton: 7
+  - EnableButton: 3
     KeyCode: 107

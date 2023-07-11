@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64df809a0e838d142ad7f5d42d15aff3, type: 3}
-  m_Name: CommandListSO
+  m_Script: {fileID: 11500000, guid: 6c370ec149c67a14ca3c4015cb95cf63, type: 3}
+  m_Name: DirectionSetting
   m_EditorClassIdentifier: 
-  commands:
-  - inputKeys: 020000000300000006000000
-    commandName: "\uD30C\uB3D9\uAD8C"
-  - inputKeys: 020000000100000004000000
-    commandName: "\uC6A9\uAD8C\uC120\uD48D\uAC01"
+  _buttonMappings:
+  - EnableButton: 0
+    KeyCode: 97
+  - EnableButton: 1
+    KeyCode: 100
+  - EnableButton: 2
+    KeyCode: 119
+  - EnableButton: 3
+    KeyCode: 115
