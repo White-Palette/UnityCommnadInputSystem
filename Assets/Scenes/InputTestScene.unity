@@ -1223,7 +1223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonSettingSO: {fileID: 11400000, guid: e08c08026044208408814dfb70465b35, type: 2}
   _directionSettingSO: {fileID: 11400000, guid: 76a22cae2c273c644bdf3bd8fe9048ff, type: 2}
-  _inputActionSO: {fileID: 11400000, guid: 01b81e66a8843364dbc9b602fed5753a, type: 2}
+  _inputDirectionActionSO: {fileID: 11400000, guid: 01b81e66a8843364dbc9b602fed5753a, type: 2}
+  _inputButtonActionSO: {fileID: 11400000, guid: b68e7f9ea6757a34fa77547b2c23cc20, type: 2}
 --- !u!4 &916685838
 Transform:
   m_ObjectHideFlags: 0

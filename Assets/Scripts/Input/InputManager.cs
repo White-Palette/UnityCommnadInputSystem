@@ -9,7 +9,10 @@ public class InputManager : MonoBehaviour
     private ButtonSettingSO _directionSettingSO = null;
 
     [SerializeField]
-    private InputActionSO _inputActionSO = null;
+    private InputActionSO _inputDirectionActionSO = null;
+
+    [SerializeField]
+    private InputButtonActionSO _inputButtonActionSO = null;
 
     private InputDirectionInformation _inputInformation = null;
     private InputButtonInformation _inputButtonInformation = null;
@@ -17,7 +20,8 @@ public class InputManager : MonoBehaviour
     private DirectionInputDetector _directionInputDetector = null;
     private ButtonInputDetector _buttonInputDetector = null;
 
-    private InputActionExecutor _inputActionExecutor = null;
+    private InputDirectionActionExecutor _inputActionExecutor = null;
+    private InputButtonActionExecutor _inputButtonActionExecutor = null;
 
     private void Awake()
     {
@@ -27,7 +31,8 @@ public class InputManager : MonoBehaviour
         _directionInputDetector = new DirectionInputDetector(_inputInformation, _buttonSettingSO);
         _buttonInputDetector = new ButtonInputDetector(_inputButtonInformation, _directionSettingSO);
 
-        _inputActionExecutor = new InputActionExecutor(_inputInformation, _inputActionSO);
+        _inputActionExecutor = new InputDirectionActionExecutor(_inputInformation, _inputDirectionActionSO);
+        _inputButtonActionExecutor = new InputButtonActionExecutor(_inputButtonInformation, _inputButtonActionSO);
 
     }
 
@@ -37,6 +42,7 @@ public class InputManager : MonoBehaviour
         _buttonInputDetector.RecognizeInput();
 
         _inputActionExecutor.CheckAndExecutor();
+        _inputButtonActionExecutor.CheckAndExecutor();
     }
 }
 
